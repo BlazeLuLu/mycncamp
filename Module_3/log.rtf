@@ -1,0 +1,43 @@
+{\rtf1\ansi\ansicpg936\cocoartf2580
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset77 ZapfDingbatsITC;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0  
+\f1 \uc0\u10008 
+\f0  \uc0\u63743  \uc0\u57520  ~/Documents/WorkSpace/golang/src/github.com/mycncamp/Module_3 \uc0\u57520  \uc0\u57504  master \'b1
+\f1 \uc0\u10010 
+\f0  \uc0\u57520  ./build.sh\
+echo "building httpserver binary"\
+building httpserver binary\
+mkdir -p bin/amd64\
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o bin/amd64/httpserver .\
+echo "building httpserver container"\
+building httpserver container\
+docker build -t blazelulu/httpserver:v1.0 .\
+[+] Building 3.3s (8/8) FINISHED\
+ => [internal] load build definition from Dockerfile                                                                               0.0s\
+ => => transferring dockerfile: 36B                                                                                                0.0s\
+ => [internal] load .dockerignore                                                                                                  0.0s\
+ => => transferring context: 2B                                                                                                    0.0s\
+ => [internal] load metadata for docker.io/library/ubuntu:latest                                                                   3.2s\
+ => [auth] library/ubuntu:pull token for registry-1.docker.io                                                                      0.0s\
+ => [internal] load build context                                                                                                  0.1s\
+ => => transferring context: 6.08MB                                                                                                0.1s\
+ => [1/2] FROM docker.io/library/ubuntu@sha256:a0d9e826ab87bd665cfc640598a871b748b4b70a01a4f3d174d4fb02adad07a9                    0.0s\
+ => CACHED [2/2] ADD bin/amd64/httpserver /httpserver                                                                              0.0s\
+ => exporting to image                                                                                                             0.0s\
+ => => exporting layers                                                                                                            0.0s\
+ => => writing image sha256:a95f0e18685d368eaa9c5ad12972f35c43ffd57568f4bb987b02e891df97ac4f                                       0.0s\
+ => => naming to docker.io/blazelulu/httpserver:v1.0                                                                               0.0s\
+\
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them\
+echo "pushing blazelulu/httpserver"\
+pushing blazelulu/httpserver\
+docker push blazelulu/httpserver:v1.0\
+The push refers to repository [docker.io/blazelulu/httpserver]\
+ad2f1f63b2a4: Pushed\
+da55b45d310b: Pushed\
+v1.0: digest: sha256:809a497e420016d4662dc4412d790dfa3e81ce8708a1efa9dbe0552ad170421d size: 740}
