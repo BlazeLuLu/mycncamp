@@ -5,18 +5,23 @@ import (
 	"github.com/mycncamp/Module_10/metrics"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"io"
+	"math/rand"
 	"net/http"
 	"os"
 	"strconv"
 	"time"
 )
 
+func randInt(min int, max int) int {
+	rand.Seed(time.Now().UTC().UnixNano())
+	return min + rand.Intn(max-min)
+}
+
 func handler(w http.ResponseWriter, r *http.Request) {
 
 	glog.V(4).Info("entering root handler")
 	timer := metrics.NewTimer()
 	defer timer.ObserveTotal()
-	user := r.URL.Query().Get("user")
 	delay := randInt(10, 2000)
 	time.Sleep(time.Millisecond * time.Duration(delay))
 
